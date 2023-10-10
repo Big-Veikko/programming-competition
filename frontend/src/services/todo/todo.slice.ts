@@ -17,14 +17,7 @@ const todoSlice = createSlice({
     extraReducers: {
         [fetchTodos.fulfilled.type]: (state, action: PayloadAction<TodoModel[]>) => {
             state.todos = action.payload;
-        },
-        [fetchTodos.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.todos = [];
-        },
-        [fetchTodos.pending.type]: (state, action: PayloadAction<string>) => {
-            state.todos = [];
         }
-
     }
 });
 
