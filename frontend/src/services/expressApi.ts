@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const expressApi = createApi({
     reducerPath: 'expressApi',
     baseQuery: fetchBaseQuery({
-      baseUrl: 'http://localhost:8000/api',
+      baseUrl: import.meta.env.VITE_EXPRESS_API_URL as string,
     //   prepareHeaders: (headers, {getState}) => {
     //     const token = (getState() as RootState).auth.token;
     //     if (token) {
