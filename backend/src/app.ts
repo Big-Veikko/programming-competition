@@ -4,7 +4,7 @@ import cors from 'cors';
 
 const app = express();
 const corsConfig = {
-    origin: 'http://localhost:5173',
+    origin: 'https://programming-competition.vercel.app',
     optionsSuccessStatus: 200
 }
 

@@ -5,4 +5,5 @@ const controller_1 = require("./controller");
 const router = (0, express_1.Router)();
 router.route('/todos').get(controller_1.getTodos);
 router.route('/todos/:id').get(controller_1.getTodo);
+router.route('/todos').post(controller_1.createTodo);
 exports.default = router;
