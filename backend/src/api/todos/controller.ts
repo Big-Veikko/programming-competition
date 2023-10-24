@@ -1,11 +1,11 @@
 import { Express, Request, Response, NextFunction } from "express";
-import prisma from "../database";
+import prisma from "../../database";
 
 
 export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const todos = await prisma.todo.findMany();
-        console.log(todos);
+        //console.log(todos);
         res.json(todos);
     } catch (error: any) {
         res.status(500).json({message: error.message})
