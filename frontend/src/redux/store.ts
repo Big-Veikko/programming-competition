@@ -2,7 +2,6 @@ import {configureStore} from '@reduxjs/toolkit';
 import {combineReducers} from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import thunk from 'redux-thunk';
 
 // apis and slices
 import { expressApi } from '../services/expressApi';
@@ -23,8 +22,7 @@ export const store = configureStore({
     reducer: persistReducer(persistConfig, reducers),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}).concat(
         [
-            expressApi.middleware,
-            thunk
+            expressApi.middleware
         ]
     )
 });

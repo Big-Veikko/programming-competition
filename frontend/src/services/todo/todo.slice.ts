@@ -13,11 +13,16 @@ const initialState: TodoState = {
 const todoSlice = createSlice({
     name: 'todo',
     initialState,
-    reducers: {},
-    extraReducers: {
-        [fetchTodos.fulfilled.type]: (state, action: PayloadAction<TodoModel[]>) => {
+    reducers: {
+        
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchTodos.fulfilled, (state, action: PayloadAction<TodoModel[]>) => {
             state.todos = action.payload;
-        }
+        });
+        // [fetchTodos.fulfilled.type]: (state, action: PayloadAction<TodoModel[]>) => {
+        //     state.todos = action.payload;
+        // }
     }
 });
 

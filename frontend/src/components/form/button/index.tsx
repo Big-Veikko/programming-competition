@@ -5,7 +5,7 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
 }
 
-const Button = ({ children, ...otherProps }: IProps) => {
+const Button = ({ children, title, ...otherProps }: IProps) => {
     return (
         <button className="button" {...otherProps}>
             {children}

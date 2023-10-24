@@ -3,19 +3,23 @@ import './styles.scss';
 
 // redux imports
 import { useGetTodosQuery } from "../../services/expressApi";
+import { getTodos } from "../../api/todo";
 import { TodoModel } from "../../services/todo/todo.model";
 
 const Todo: React.FC = () => {
     const { data: todo = [], error, isLoading } = useGetTodosQuery();
-
+    const response = getTodos();
+    response.then((res) => {
+        console.log(res);
+    })
+    
     if (isLoading) {
         return <div>Loading...</div>
     }
 
     if (error) {
-        console.log(error);
+        return <div>Something went wrong...</div>
         
-
     }
 
     return (
