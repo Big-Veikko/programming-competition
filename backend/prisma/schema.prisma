@@ -108,8 +108,8 @@ model University {
 model Event {
   id     String   @id @default(auto()) @map("_id") @db.ObjectId
   subject String
-  dtstart DateTime
-  dtend DateTime
+  dtstart String
+  dtend String
   all_day_event Boolean
   description String
   location String
@@ -118,7 +118,7 @@ model Event {
   status String
   sequence Int
   priority Int
-  dtstamp DateTime
+  dtstamp String
   transp String
   organizer Json
   attendees Json[]
