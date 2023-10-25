@@ -9,6 +9,15 @@ export const getEvents = async (req: Request, res: Response, next: NextFunction)
             where: {
                 private: false,
                 type: "event"
+            },
+            select: {
+                id: true,
+                subject: true,
+                dtstart: true,
+                dtend: true,
+                organizer: true,
+                description: true,
+                all_day_event: true
             }
         });
 
