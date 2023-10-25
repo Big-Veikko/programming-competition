@@ -2,41 +2,74 @@ import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
 
 
-export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const todos = await prisma.todo.findMany();
-        //console.log(todos);
-        res.json(todos);
+        
+        res.status(200).json({message: ""})
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
 }
 
-export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const getEvent= async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {id} = req.params;
-        const todo = await prisma.todo.findUnique({
-            where: {
-                id: String(id)
-            }
-        });
-        res.json(todo);
+        
+        res.status(200).json({message: ""})
     } catch (error: any) {
         res.status(500).json({message: "Get todo failed"})
     }
 }
 
-export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const createEvent = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {title} = req.body;
-        const todo = await prisma.todo.create({
-            data: {
-                title: title,
-            }
-        });
-        res.json(todo);
+
+        res.status(200).json({message: ""})
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
 }
 
+export const updateEvent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+
+        res.status(200).json({message: ""})
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export const deleteEvent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+
+        res.status(200).json({message: ""})
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export const attendEvent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        
+        res.status(200).json({message: ""})
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export const unattendEvent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        
+        res.status(200).json({message: ""})
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+export const approveEvent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        
+        res.status(200).json({message: ""})
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
