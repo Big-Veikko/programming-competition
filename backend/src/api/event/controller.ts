@@ -38,6 +38,13 @@ export const getEvents = async (req: Request, res: Response, next: NextFunction)
 
 export const getEvent= async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const {id} = req.params;
+        const event = await prisma.event.findUnique({
+            where: {
+                id: String(id)
+            }
+        });
+        res.status(200).json(event)
         
         res.status(200).json({message: ""})
     } catch (error: any) {
