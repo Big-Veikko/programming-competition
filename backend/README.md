@@ -257,11 +257,9 @@ Expected Output
     "title": "The 5th Wave",
     "post_date": "2016-01-22",
     "thumbnail": "http://www.movieposter.com/posters/archive/main/217/MPW-108532",
-    "engagement": {
-      "likes": 100,
-      "comments": 50,
-      "shares": 20
-    }
+    "likes": 100,
+    "dislikes": 50
+    
   }
 ]
 ```
@@ -361,7 +359,10 @@ Expected Output
     "dtend": "20231111T160000",
     "type": "meeting",
     "thumbnail": "http://www.movieposter.com/posters/archive/main/217/",
-    "organizer": "John Doe",
+    "organizer": {
+        "name": "Organizer Name",
+        "email": "Organizer Email"
+      }
     "description": "Four waves of increasingly deadly alien attacks have left most of Earth decimated. Cassie is on the run, desperately trying to save her younger brother."
   }
 ]
@@ -383,7 +384,10 @@ Expected Output
   "dtend": "20231111T160000",
   "type": "meeting",
   "thumbnail": "http://www.movieposter.com/posters/archive/main/217/",
-  "organizer": "John Doe",
+  "organizer": {
+        "name": "Organizer Name",
+        "email": "Organizer Email"
+      },
   "description": "Four waves of increasingly deadly alien attacks have left most of Earth decimated. Cassie is on the run, desperately trying to save her younger brother."
 }
 ```
@@ -711,7 +715,10 @@ Expected Output
       "dtend": "Event End Date",
       "type": "Event Type",
       "thumbnail": "Event Thumbnail",
-      "organizer": "Event Organizer",
+      "organizer": {
+        "name": "Organizer Name",
+        "email": "Organizer Email"
+      },
       "description": "Event Description"
     }
   ]
@@ -916,7 +923,7 @@ Expected Output
   "author": "CERN",
   "posted_date": "2019-01-01",
   "description": "This is a description of the internship",
-  "requirements": "This is a description of the requirements",
+  "requirements": ["Python", "Django", "Web Development"],
   "tags": ["CERN", "Internship", "Python", "Django", "Web Development"],
   "link": "https://careers.cern/job/12798",
   "location": "Geneva, Switzerland",
