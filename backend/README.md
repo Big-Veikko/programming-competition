@@ -362,7 +362,7 @@ Expected Output
     "organizer": {
         "name": "Organizer Name",
         "email": "Organizer Email"
-      }
+      },
     "description": "Four waves of increasingly deadly alien attacks have left most of Earth decimated. Cassie is on the run, desperately trying to save her younger brother."
   }
 ]
