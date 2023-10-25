@@ -1,0 +1,42 @@
+{
+    "name": "John Doe",
+    "university": "NUST",
+    "degree": "Bachelors",
+    "major": "Computer Science",
+    "graduation": "2019",
+    "employment_status": "Employed",
+    "employment_history": [
+        {
+            "company": "Google",
+            "position": "Software Engineer",
+            "start_date": "2019",
+            "end_date": "2020",
+            "description": "Worked on the Google Search Engine"
+        },
+        {
+            "company": "Facebook",
+            "position": "Software Engineer",
+            "start_date": "2020",
+            "end_date": "2021",
+            "description": "Worked on the Facebook News Feed"
+        },
+        {
+            "company": "Amazon",
+            "position": "Software Engineer",
+            "start_date": "2021",
+            "end_date": "2022",
+            "description": "Worked on the Amazon Search Engine"
+        },
+        {
+            "company": "Microsoft",
+            "position": "Software Engineer",
+            "start_date": "2022",
+            "end_date": "Present",
+            "description": "Worked on the Microsoft Search Engine"
+        }
+
+    
+    ]
+
+
+}

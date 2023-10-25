@@ -1,0 +1,8 @@
+{
+    "event_details": "event",
+    "target": "target amount",
+    "amount_till_target": "amount till target",
+    "cause": "cause",
+    "approval_status": "pending",
+    "target_status": "pending"
+}

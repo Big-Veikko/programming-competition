@@ -1,0 +1,25 @@
+[{
+    "name": "NUST",
+    "website": "nust.na",
+    "contact_email": "alumni@nust.na",
+    "contact_phone": "+264 61 207 2056",
+    "address": "13 Jackson Kaujeua Street, Windhoek, Namibia",
+    "logo": "https://www.nust.na/images/logo.png",
+    "social": {
+        "facebook": "https://www.facebook.com/nust.na",
+        "twitter": "https://twitter.com/nust_namibia",
+        "linkedin": "https://www.linkedin.com/school/namibia-university-of-science-and-technology/",
+        "instagram": "https://www.instagram.com/nust_namibia/",
+        "youtube": "https://www.youtube.com/channel/UCZ1Q4Q8Z0Y5Y5qQ1Q5Z1Z0A"
+    }
+
+},
+
+{
+    "id": "id",
+    "password": "admin",
+    "email": "",
+    "user_type": "admin",
+    "status": "active"
+}
+]

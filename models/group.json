@@ -1,0 +1,15 @@
+{
+    "tag": "company",
+    "name": "Company Name",
+    "description": "Company Description",
+    "owner": "id of the group creator",
+    "members": [
+        {
+            "id": "Member ID",
+            "name": "Member Name",
+            "title": "Member Title",
+            "email_address": "Member Email Address",
+            "phone_number": "Member Phone Number"
+        }
+    ]
+}

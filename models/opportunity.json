@@ -1,0 +1,16 @@
+{
+    "name": "Internship at CERN",
+    "author": "CERN",
+    "posted_date": "2019-01-01",
+    "description": "This is a description of the internship",
+    "requirements": "This is a description of the requirements",
+    "tags": ["CERN", "Internship", "Python", "Django", "Web Development"],
+    "link": "https://careers.cern/job/12798",
+    "location": "Geneva, Switzerland",
+    "duration": "6 months",
+    "salary": "CHF 3,319.00 per month",
+    "application_deadline": "2019-01-31",
+    "application_link": "https://careers.cern/job/12798",
+    "contact": "exmaple@email.com"
+    
+}
