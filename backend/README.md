@@ -430,7 +430,7 @@ Expected Output
 
 ```json
 {
-  "status": 200
+  "status": 204
 }
 ```
 
