@@ -130,8 +130,12 @@ export const updateEvent = async (req: Request, res: Response, next: NextFunctio
 
 export const deleteEvent = async (req: Request, res: Response, next: NextFunction) => {
     try {
-
-        res.status(200).json({message: ""})
+        await prisma.event.delete({
+            where: {
+                id: String(req.params.id)
+            }
+        });
+        res.status(204).json({message: "Event deleted successfully"})
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
