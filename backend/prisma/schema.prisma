@@ -111,8 +111,8 @@ model Event {
   dtstart String
   dtend String
   all_day_event Boolean
-  description String
-  location String
+  description String?
+  location String?
   private Boolean
   type String
   status String
