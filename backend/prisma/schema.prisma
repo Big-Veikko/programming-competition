@@ -17,3 +17,121 @@ model Todo {
   title     String
   done      Boolean  @default(false)
 }
+
+model Alumni {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  university String
+  degree   String
+  major    String
+  graduation     Int
+  employment_status String
+  employment_history Json[]
+}
+
+model User {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
+  password String
+  user_type String
+  status   String
+}
+
+
+
+model Blog {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  post_date DateTime @default(now())
+  content  String
+  thumbnail String
+  author   String
+  likes    Int
+  dislikes Int
+  comments Json[]
+}
+
+model Feedback{
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  post_date DateTime @default(now())
+  summary  String
+  author   Json
+}
+
+model Group {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  description String
+  owner    String
+  members  Json[]
+  events   Json[]
+}
+
+model News {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  post_date DateTime @default(now())
+  content  String
+  author Json
+  tags String[]
+}
+
+model Opportunity {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  author  String
+  post_date DateTime @default(now())
+  description String
+  requirements String[]
+  tags String[]
+  link String
+  location String
+  duration String
+  salary String
+  application_deadline DateTime
+  application_link String
+  contact String
+}
+
+model University {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  website String
+  contact_email String
+  contact_phone String
+  address String
+  logo String
+  social Json
+}
+
+model Event {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  subject String
+  dtstart DateTime
+  dtend DateTime
+  all_day_event Boolean
+  description String
+  location String
+  private Boolean
+  type String
+  status String
+  sequence Int
+  priority Int
+  dtstamp DateTime
+  transp String
+  organizer Json
+  attendees Json[]
+  fundraiser Fundraiser[]
+}
+
+model Fundraiser {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  event_id String @db.ObjectId @unique
+  event_details Event @relation(fields: [event_id], references: [id])
+  target Float
+  raised Float
+  cause String
+  approval_status String
+  target_status String
+}
