@@ -5,7 +5,23 @@ import prisma from "../../database";
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
     try {
         
-        res.status(200).json({message: ""})
+        let events = await prisma.event.findMany({
+            where: {
+                private: false,
+                type: "event"
+            }
+        });
+
+        // process events to format dtstart and dtend for all day events
+        events.forEach(event => {
+            if (event.all_day_event) {
+                event.dtstart = event.dtstart.split(":")[1];
+                event.dtend = event.dtend.split(":")[1];
+            }
+        });
+
+
+        res.status(200).json(events)
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
