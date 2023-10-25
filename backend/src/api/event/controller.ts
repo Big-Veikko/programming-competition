@@ -114,8 +114,15 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
 
 export const updateEvent = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const updateEvent = await prisma.event.update({
+            where: {
+                id: String(req.params.id)
+            },
+            data:req.body
+            
+        });
 
-        res.status(200).json({message: ""})
+        res.status(200).json(updateEvent)
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
