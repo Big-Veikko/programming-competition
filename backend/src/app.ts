@@ -1,5 +1,5 @@
 import express from 'express';
-import {TodoRouter} from './api/todos';
+import { AuthRouter } from './api/auth';
 import { EventRouter } from './api/event';
 import cors from 'cors';
 
@@ -19,7 +19,7 @@ app.use(cors(
 ));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/api', TodoRouter);
+app.use('/api', AuthRouter);
 app.use('/api', EventRouter);
 
 
