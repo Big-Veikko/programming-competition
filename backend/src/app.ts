@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 app.use(cors(
     corsConfig
 ));
+app.disable('x-powered-by');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/api', AuthRouter);
