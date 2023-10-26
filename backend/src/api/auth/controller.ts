@@ -32,13 +32,18 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         res.status(500).json({message: "Login failed"})
     }
 }
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = await prisma.user.findUnique({
             where: {
-                id: String(id)
+                id: req.params.id
             }
         });
-        res.json(todo);
+
+        res.status(200).json({message: "User retrieved successfully", data: {id: user?.id, email: user?.email, user_type: user?.user_type, status: user?.status}});
+        
     } catch (error: any) {
-        res.status(500).json({message: "Get todo failed"})
+        res.status(500).json({message: "Login failed"})
     }
 }
 
