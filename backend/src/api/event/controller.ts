@@ -161,8 +161,16 @@ export const unattendEvent = async (req: Request, res: Response, next: NextFunct
 
 export const approveEvent = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        
-        res.status(200).json({message: ""})
+        const {id} = req.params;
+        const event = await prisma.event.update({
+            where: {
+                id: String(id)
+            },
+            data: {
+                private: false
+            }
+        });
+        res.status(200).json({message: "Event approved successfully"})
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }

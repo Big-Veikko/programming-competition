@@ -12,6 +12,6 @@ router.route("/event/:id").put(updateEvent);
 router.route("/event/:id").delete(deleteEvent);
 router.route("/event/attend/:id").post(attendEvent);
 router.route("/event/attend/:id").delete(unattendEvent);
-router.route("/event/approve/:id").post(approveEvent);
+router.route("/event/approve/:id").put(approveEvent);
 
 export default router;
