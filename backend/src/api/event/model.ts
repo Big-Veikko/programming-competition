@@ -3,7 +3,7 @@ interface IOrganizer {
     email: string;
 };
 
-interface IAttendee {
+export interface IAttendee {
     name: string;
     email: string;
 }
