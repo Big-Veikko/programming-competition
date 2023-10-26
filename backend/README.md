@@ -179,11 +179,53 @@ Expected Output
 
 ### Auth
 
-/auth
+/auth/login
 
 Method: POST
 
 Description: Login a user
+
+Expected Output
+
+```json
+{
+  "status": 200,
+  "message": "Login Successful",
+  "data": {
+    "id": "id",
+    "email": "",
+    "user_type": "admin",
+    "status": "active"
+  }
+}
+```
+
+/auth/register
+
+Method: POST
+
+Description: Register a new user
+
+Expected Output
+
+```json
+{
+  "status": 201,
+  "message": "Registration Successful",
+  "data": {
+    "id": "id",
+    "email": "",
+    "user_type": "admin",
+    "status": "active"
+  }
+}
+```
+
+/auth/user/:id
+
+Method: GET
+
+Description: Get the details of a particular user
 
 Expected Output
 
@@ -195,16 +237,11 @@ Expected Output
     "email": "",
     "user_type": "admin",
     "status": "active"
-  },
-  "token": {
-    "access": "access_token",
-    "refresh": "refresh_token",
-    "expires_in": "expires_in"
   }
 }
 ```
 
-/auth
+/auth/user/:id
 
 Method: PUT
 
@@ -224,11 +261,11 @@ Expected Output
 }
 ```
 
-/auth
+/auth/user/:id
 
 Method: DELETE
 
-Description: Delete the details of the currently logged in user
+Description: Delete the details of a particular user
 
 Expected Output
 
@@ -236,6 +273,21 @@ Expected Output
 {
   "status": 204,
   "message": "User deleted successfully"
+}
+```
+
+/auth/reset-password/:id
+
+Method: POST
+
+Description: Reset the password of the currently logged in user
+
+Expected Output
+
+```json
+{
+  "status": 200,
+  "message": "Password reset successful"
 }
 ```
 
