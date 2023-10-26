@@ -21,10 +21,17 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 }
 
-export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {id} = req.params;
-        const todo = await prisma.todo.findUnique({
+        const user = await prisma.user.create({
+            data: req.body
+        });
+
+        res.status(200).json({message: "Registration Successfull", data: {id: user.id, email: user.email, user_type: user.user_type, status: user.status}});
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}
             where: {
                 id: String(id)
             }
