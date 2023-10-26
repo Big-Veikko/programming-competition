@@ -105,6 +105,13 @@ model University {
   social Json
 }
 
+model Attendees {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  email String
+  event_id String @db.ObjectId @unique
+  event_details Event @relation(fields: [event_id], references: [id])
+}
 model Event {
   id     String   @id @default(auto()) @map("_id") @db.ObjectId
   subject String
@@ -121,7 +128,7 @@ model Event {
   dtstamp String
   transp String
   organizer Json
-  attendees Json[]
+  attendees Attendees[]
   fundraiser Fundraiser[]
 }
 
