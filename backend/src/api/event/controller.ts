@@ -143,9 +143,38 @@ export const deleteEvent = async (req: Request, res: Response, next: NextFunctio
 
 export const attendEvent = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const {id} = req.params;
+        const {name, email} = req.body;
+        const attendeesFound = await prisma.event.findUnique({
+            where: {
+                id: String(id)
+            },
+            select: {
+                attendees: true
+            }
+        });
+
+        const existingAttendees = attendeesFound?.attendees
+
+        const formatedAttendees: any = existingAttendees?.map( (attendee: any) => ({name: attendee.name, email: attendee.email}))
+
+        const attendees = [...formatedAttendees, {name: name, email: email}]
+
+        const event = await prisma.event.update({
+            where: {
+                id: String(id)
+            },
+            data: {
+                attendees: {
+                    set: attendees.map( attendee => ({ ...attendee }))
+
+                }
+            }
+        });
         
-        res.status(200).json({message: ""})
+        res.status(200).json(event)
     } catch (error: any) {
+        console.error(error);
         res.status(500).json({message: error.message})
     }
 }
