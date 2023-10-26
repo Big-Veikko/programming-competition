@@ -1,5 +1,5 @@
 import { Express, Request, Response, NextFunction } from "express";
-import prisma from "../../database";
+import prisma from "../../database"; 
 
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
@@ -32,6 +32,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         res.status(500).json({message: "Login failed"})
     }
 }
+
 export const getUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user = await prisma.user.findUnique({
@@ -61,6 +62,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
         res.status(500).json({message: "Login failed"})
     }
 }
+
 export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
         await prisma.user.delete({
