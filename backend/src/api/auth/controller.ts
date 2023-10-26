@@ -75,3 +75,19 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
     }
 }
 
+export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = await prisma.user.update({
+            where: {
+                id: req.params.id
+            },
+            data: {
+                password: req.body.password
+            }
+        });
+
+        res.status(200).json({message: "Password reset successful"});
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}
