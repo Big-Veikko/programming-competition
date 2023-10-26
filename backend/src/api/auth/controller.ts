@@ -2,13 +2,22 @@ import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
 
 
-export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const todos = await prisma.todo.findMany();
-        //console.log(todos);
-        res.json(todos);
+        const user = await prisma.user.findUnique({
+            where: {
+                email: req.body.email
+            }
+        });
+
+        if (!user || user.password !== req.body.password) {
+            return res.status(400).json({message: "Invalid credentials"});
+        }
+
+        res.status(200).json({message: "Login Successful", data: {id: user.id, email: user.email, user_type: user.user_type, status: user.status}});
+
     } catch (error: any) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({message: "Login failed"})
     }
 }
 
