@@ -5,6 +5,7 @@ import {
 	createGroup,
 	deleteGroup,
 	updateGroup,
+	addGroupMember,
 } from "./controller";
 
 const router: Router = Router();
@@ -15,5 +16,6 @@ router.route("/group").post(createGroup);
 router.route("/group/:id").put(updateGroup);
 router.route("/group/:id").delete(deleteGroup);
 
+router.route("/group/join/:id").put(addGroupMember);
 
 export default router;
