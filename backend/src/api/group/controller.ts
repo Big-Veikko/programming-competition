@@ -56,17 +56,17 @@ export const updateGroup = async (
 	res: Response,
 	next: NextFunction
 ) => {
-    try {
-        const group = await prisma.group.update({
-            where: {
-                id: String(req.params.id)
-            },
-            data: req.body,
-        });
-        res.json(group);
-    } catch (error: any) {
-        res.status(500).json({message: "Failed to update group"})
-    }
+	try {
+		const group = await prisma.group.update({
+			where: {
+				id: String(req.params.id),
+			},
+			data: req.body,
+		});
+		res.json(group);
+	} catch (error: any) {
+		res.status(500).json({ message: "Failed to update group" });
+	}
 };
 
 export const deleteGroup = async (
@@ -125,3 +125,11 @@ export const addGroupMember = async (
 		res.status(500).json({ message: "Failed to join group" });
 	}
 };
+
+export const updateGroupMember = async () => {};
+
+export const getGroupMembers = async () => {};
+
+export const getGroupMember = async () => {};
+
+export const deleteGroupMember = async () => {};
