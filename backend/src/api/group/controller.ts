@@ -94,20 +94,39 @@ export const addGroupMember = async (
 	next: NextFunction
 ) => {
 	try {
-        const { id, name, title, email_address, phone_number } = req.body;
+		const { id, name, title, email_address, phone_number } = req.body;
 		const groupFound = await prisma.group.findUnique({
 			where: {
 				id: String(req.params.id),
 			},
-            select: {
-                members: true,
-            }
+			select: {
+				members: true,
+			},
 		});
 
+		if (!groupFound) {
+			return res.status(404).json({ message: "Group not found" });
+		}
+
 		const existingMembers = groupFound?.members;
-        
-        const formattedMembers: any = existingMembers?.map((member: any) => ({id: member.id, name: member.name, title: member.title, email_address: member.email_address, phone_number: member.phone_number}))
-        const members = [...formattedMembers, {id: id, name: name, title: title, email_address: email_address, phone_number: phone_number}];
+
+		const formattedMembers: any = existingMembers?.map((member: any) => ({
+			id: member.id,
+			name: member.name,
+			title: member.title,
+			email_address: member.email_address,
+			phone_number: member.phone_number,
+		}));
+		const members = [
+			...formattedMembers,
+			{
+				id: id,
+				name: name,
+				title: title,
+				email_address: email_address,
+				phone_number: phone_number,
+			},
+		];
 
 		const group = await prisma.group.update({
 			where: {
@@ -115,8 +134,8 @@ export const addGroupMember = async (
 			},
 			data: {
 				members: {
-                    set: members.map( member => ({...member})),
-                }
+					set: members.map((member) => ({ ...member })),
+				},
 			},
 		});
 
