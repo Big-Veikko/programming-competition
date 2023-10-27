@@ -27,7 +27,7 @@ body,
 .fullHeight {
   height: 100%;
   background-color: #e2e2e2;
-  color: #383838;
+  color: var(--text);
 }
 
 .main {
