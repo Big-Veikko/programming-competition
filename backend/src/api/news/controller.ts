@@ -2,7 +2,44 @@ import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
 
 
-export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+// export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+//     try {
+//         const todos = await prisma.todo.findMany();
+//         //console.log(todos);
+//         res.json(todos);
+//     } catch (error: any) {
+//         res.status(500).json({message: error.message})
+//     }
+// }
+
+// export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+//     try {
+//         const {id} = req.params;
+//         const todo = await prisma.todo.findUnique({
+//             where: {
+//                 id: String(id)
+//             }
+//         });
+//         res.json(todo);
+//     } catch (error: any) {
+//         res.status(500).json({message: "Get todo failed"})
+//     }
+// }
+
+// export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+//     try {
+//         const {title} = req.body;
+//         const todo = await prisma.todo.create({
+//             data: {
+//                 title: title,
+//             }
+//         });
+//         res.json(todo);
+//     } catch (error: any) {
+//         res.status(500).json({message: error.message})
+//     }
+// }
+
 //Get multiple news
 export const getNews = async (
     req: Request, res: Response, next: NextFunction 
@@ -15,8 +52,7 @@ export const getNews = async (
             massege: error.message
         })        
     }
-
-export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+};
 //Get a specific News article
 export const getNewsA = async (req: Request, res: Response, next: NextFunction) =>
 {
@@ -31,8 +67,7 @@ export const getNewsA = async (req: Request, res: Response, next: NextFunction) 
     } catch (error: any) {
         res.status(500).json({message: "Unsucessful Process"});
     }
-
-export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+};
 //Create an event
 export const createNewsA = async (req: Request, res: Response, next: NextFunction) =>
 {
