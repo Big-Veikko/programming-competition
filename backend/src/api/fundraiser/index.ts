@@ -1,1 +1,1 @@
-export {default as FundrasierRouter} from './route';
+export { default as FundrasierRouter } from "./route";
