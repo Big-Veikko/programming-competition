@@ -1,7 +1,6 @@
 import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
 
-
 export const getUniversities = async (
 	req: Request,
 	res: Response,
@@ -10,7 +9,7 @@ export const getUniversities = async (
 	try {
 		let universities = await prisma.university.findMany({
 			select: {
-                id: true,
+				id: true,
 				name: true,
 				website: true,
 				contact_email: true,
@@ -81,7 +80,6 @@ export const updateUniversity = async (
 	res: Response,
 	next: NextFunction
 ) => {
-	// do something
 	try {
 		const updateUniversity = await prisma.university.update({
 			where: {
@@ -100,7 +98,6 @@ export const deleteUniversity = async (
 	res: Response,
 	next: NextFunction
 ) => {
-	// do something
 	try {
 		const deleteUniversity = await prisma.university.delete({
 			where: {
