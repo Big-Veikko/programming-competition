@@ -1,6 +1,7 @@
 import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
-import { IEventRequest } from "./model";
+import { IEvent, IEventRequest } from "./model";
+import { createCalendarEvent } from "./utils";
 
 
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
@@ -30,7 +31,7 @@ export const getEvents = async (req: Request, res: Response, next: NextFunction)
             }
         });
 
-
+        
         res.status(200).json(events)
     } catch (error: any) {
         res.status(500).json({message: error.message})
@@ -62,7 +63,7 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
             // formate the value of dtstart and dtend to ;VALUE=DATE:20231120
             const dtstart_formatted = `;VALUE=DATE:${dtstart}`;
             const dtend_formatted = `;VALUE=DATE:${dtend}`;
-            const event = await prisma.event.create({
+            const event: any = await prisma.event.create({
                 data: {
                     subject: subject,
                     dtstart: dtstart_formatted,
@@ -82,9 +83,11 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
                 }
             });
 
+            createCalendarEvent(event);
+
             res.status(200).json({message: "Event created successfully"});   
         } else {
-            const event = await prisma.event.create({
+            const event: any = await prisma.event.create({
                 data: {
                     subject: subject,
                     dtstart: dtstart,
@@ -104,6 +107,7 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
                 }
             });
 
+            createCalendarEvent(event);
             res.status(200).json({message: "Event created successfully"});
         }
 
