@@ -1,69 +1,89 @@
-:root{
-    --text-colour: #383838;
+:root {
+  --text: hsl(43, 90%, 4%);
+  --background: hsl(0, 0%, 97%);
+  --primary: hsl(205, 100%, 17%);
+  --secondary: hsl(39, 30%, 83%);
+  --accent: hsl(40, 30%, 43%);
 }
 
-html{
-    font-size: 10px;
+// $text: hsl(43, 90%, 4%);
+// $background: hsl(0, 0%, 97%);
+// $accent: hsl(40, 30%, 43%);
+
+html {
+  font-size: 10px;
 }
 
-html, body{
-    margin: 0;
-    padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-html, body, #root, .App, .fullHeight{
-    height: 100%;
-    background-color: #E2E2E2;
-    color: #383838;
+html,
+body,
+#root,
+.App,
+.fullHeight {
+  height: 100%;
+  background-color: #e2e2e2;
+  color: #383838;
 }
 
-.main{
-    width: 100%;
-    height: calc(100% - 5rem);
-    max-width: 1450px;
-    padding: 0 20px;
-    margin: 0 auto;
+.main {
+  width: 100%;
+  height: calc(100% - 5rem);
+  max-width: 1450px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
-*, ::before, ::after{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.8rem;
-    line-height: 1;
-    font-weight: 400;
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 400;
 }
 
-a{
-    text-decoration: none;
-    cursor: pointer;
-    color: #f8f9f8;
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #f8f9f8;
 }
 
-a, a:hover{
-    -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+a,
+a:hover {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: var(--text-colour);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: var(--text);
 }
 
-p{
-    font-family: 'Nunito', sans-serif;
-    color: var(--text-colour);
+p {
+  font-family: "Nunito", sans-serif;
+  color: var(--text);
 }
 
-.card-box{
-    border-radius: 30px;
+.card-box {
+  border-radius: 30px;
   box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1);
   background: #f8f9f8;
   padding: 25px;
 }
-
