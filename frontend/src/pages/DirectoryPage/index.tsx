@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import { SubmitBtn } from "../../components/button/Buttons";
-import GraduatesImage from "/src/assets/graduates.jpg";
 
 import "./styles.scss";
 
