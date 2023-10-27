@@ -11,6 +11,7 @@ import TodosPage from "./pages/TodosPage";
 
 //styles
 import './default.scss';
+import { DirectoryPage } from "./pages/DirectoryPage";
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const App: React.FC = () => {
     return (
         <Routes>
             <Route path="/" element={<TodosPage/>}/>
+            <Route path="/directory" element={<DirectoryPage/>}/>
         </Routes>
     )
 }
