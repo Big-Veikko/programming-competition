@@ -254,6 +254,39 @@ export const getGroupMembers = async (
     }
 };
 
-export const getGroupMember = async () => {};
+export const getGroupMember = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+    try {
+        const groupFound = await prisma.group.findUnique({
+            where: {
+                id: String(req.params.id),
+            },
+            select: {
+                members: true,
+            },
+        });
+
+        if (!groupFound) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const existingMembers = groupFound?.members;
+
+        const formattedMembers: any = existingMembers?.map((member: any) => ({
+            id: member.id,
+            name: member.name,
+            title: member.title,
+            email_address: member.email_address,
+            phone_number: member.phone_number,
+        }));
+
+        res.json(formattedMembers);
+    } catch (error: any) {
+        res.status(500).json({ message: "Failed to get group member" });
+    }
+};
 
 export const deleteGroupMember = async () => {};
