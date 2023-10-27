@@ -17,18 +17,20 @@ export const getNews = async (
     }
 
 export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+//Get a specific News article
+export const getNewsA = async (req: Request, res: Response, next: NextFunction) =>
+{
     try {
         const {id} = req.params;
-        const todo = await prisma.todo.findUnique({
+        const news = await prisma.news.findUnique({
             where: {
-                id: String(id)
-            }
+                id: String(id),
+            },
         });
-        res.json(todo);
+        res.json(event);
     } catch (error: any) {
-        res.status(500).json({message: "Get todo failed"})
+        res.status(500).json({message: "Unsucessful Process"});
     }
-}
 
 export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
