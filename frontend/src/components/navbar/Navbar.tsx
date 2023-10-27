@@ -2,6 +2,7 @@
 import "./styles.scss";
 import logoImage from "/src/assets/XA.png";
 import { PrimaryBtn } from "../button/Buttons";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -11,14 +12,14 @@ export default function Navbar() {
       </a>
       <div className="nav-items">
         <div className="nav-links">
-          <a href="">Home</a>
+          <Link to={"/"}>Home</Link>
           <a href="">Giving</a>
-          <a href="">Events</a>
+          <Link to={"/events"}>Events</Link>
           <a href="">Opportunity</a>
           <a href="">Blog</a>
-          <a href="">Directory</a>
+          <Link to={"/directory"}>Directory</Link>
         </div>
-        <PrimaryBtn text="Contact Us" onClick={() => {}} />
+        <Link to={"/contact"}>Contact Us</Link>
       </div>
     </div>
   );

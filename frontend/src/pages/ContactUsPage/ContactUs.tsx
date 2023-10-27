@@ -1,9 +1,11 @@
 import React from 'react';
 import './ContactUs.scss';
+import Navbar from '../../components/navbar/Navbar';
 
 const ContactUs: React.FC = () => {
   return (
     <div className="contact-us-page">
+      <Navbar/>
       <section className="contact-section">
         <h1>Contact XploreAlumni Association</h1>
         <p>Use this form to send an email to XA</p>

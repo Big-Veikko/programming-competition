@@ -8,15 +8,15 @@ import ContactUs from "./pages/ContactUsPage/ContactUs";
 import { DirectoryPage } from "./pages/DirectoryPage";
 
 const App: React.FC = () => {
+    
   return (
-    <Router>
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/event" element={<Event />} />
-        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/events" element={<Event />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/directory" element={<DirectoryPage />} />
       </Routes>
-    </Router>
   );
 };
 
