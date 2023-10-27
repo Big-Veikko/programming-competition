@@ -3,14 +3,18 @@ import prisma from "../../database";
 
 
 export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+//Get multiple news
+export const getNews = async (
+    req: Request, res: Response, next: NextFunction 
+) => {
     try {
-        const todos = await prisma.todo.findMany();
-        //console.log(todos);
-        res.json(todos);
+        const news = await prisma.news.findMany();
+        res.json(news);
     } catch (error: any) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({
+            massege: error.message
+        })        
     }
-}
 
 export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
     try {
