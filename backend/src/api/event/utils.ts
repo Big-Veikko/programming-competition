@@ -1,6 +1,7 @@
 import * as ics from 'ics';
 import { IEvent} from './model';
 import moment from 'moment';
+import { writeFileSync } from 'fs';
 
 export const createCalendarEvent = (event: IEvent) => {
     const organizer: ics.Person = {
@@ -70,7 +71,7 @@ export const createCalendarEvent = (event: IEvent) => {
         if (error) {
             console.log(error)
         }
-        console.log(value)
+        writeFileSync(`${__dirname}/event.ics`, value)
     })
 
 }
