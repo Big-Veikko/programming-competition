@@ -1,6 +1,3 @@
-import { Router, Response, Request } from "express";
-import { getTodos, getTodo, createTodo } from "./controller";
-
 import { Router, Request, Response } from "express";
 import {
   getOpps,
@@ -12,12 +9,6 @@ import {
 
 const router: Router = Router();
 
-
-router.route('/todos').get(getTodos);
-router.route('/todos/:id').get(getTodo);
-router.route('/todos').post(createTodo);
-
-export default router;router.route("/Opps").get(getOpps);
 router.route("/Opps").get(getOpps);
 router.route("/Opp/:id").get(getOpp);
 router.route("/Opp").post(createOpp);
