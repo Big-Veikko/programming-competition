@@ -20,8 +20,9 @@ $secondary: hsl(39, 30%, 83%);
 
 .secondary-btn {
   background-color: $secondary;
+  color: var(--text);
 
   &:hover {
-    background-color: darken($secondary, 90%);
+    background-color: darken($secondary, 20%);
   }
 }

@@ -22,4 +22,12 @@ const SecondaryBtn: FunctionComponent<ButtonProps> = ({ text, onClick }) => {
   );
 };
 
-export { PrimaryBtn, SecondaryBtn };
+const SubmitBtn: FunctionComponent<ButtonProps> = ({ text, onClick }) => {
+  return (
+    <button type="submit" className="btn secondary-btn" onClick={onClick}>
+      {text}
+    </button>
+  );
+};
+
+export { PrimaryBtn, SecondaryBtn, SubmitBtn };
