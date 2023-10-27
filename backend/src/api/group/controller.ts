@@ -289,4 +289,67 @@ export const getGroupMember = async (
     }
 };
 
-export const deleteGroupMember = async () => {};
+export const deleteGroupMember = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+    try {
+        const { id } = req.params;
+        const groupFound = await prisma.group.findUnique({
+            where: {
+                id: String(req.params.id),
+            },
+            select: {
+                members: true,
+            },
+        });
+
+        if (!groupFound) {
+            return res.status(404).json({ message: "Group not found" });
+        }
+
+        const existingMembers = groupFound?.members as {
+            id: string;
+            name: string;
+            title: string;
+            email_address: string;
+            phone_number: string;
+        }[];
+
+        const memberToDelete = existingMembers?.find(
+            (member) => member.id === id
+        );
+
+        if (!memberToDelete) {
+            return res.status(404).json({ message: "Member not found" });
+        }
+
+        const formattedMembers: any = existingMembers?.map((member: any) => ({
+            id: member.id,
+            name: member.name,
+            title: member.title,
+            email_address: member.email_address,
+            phone_number: member.phone_number,
+        }));
+
+        const members = formattedMembers?.filter(
+            (member: any) => member.id !== id
+        );
+
+        const group = await prisma.group.update({
+            where: {
+                id: String(req.params.id),
+            },
+            data: {
+                members: {
+                    set: members.map((member: any) => ({ ...member })),
+                },
+            },
+        });
+
+        res.json(groupFound);
+    } catch (error: any) {
+        res.status(500).json({ message: "Failed to delete group member" });
+    }
+};
