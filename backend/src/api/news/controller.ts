@@ -33,16 +33,17 @@ export const getNewsA = async (req: Request, res: Response, next: NextFunction) 
     }
 
 export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+//Create an event
+export const createNewsA = async (req: Request, res: Response, next: NextFunction) =>
+{
     try {
         const {title} = req.body;
-        const todo = await prisma.todo.create({
-            data: {
-                title: title,
-            }
+        const event = await prisma.news.create({
+            data: req.body,
         });
-        res.json(todo);
+        res.status(200).json({message: "News article successfully created!"})
     } catch (error: any) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({message :"Failed to create News Article! Try again later"})
     }
 }
 
