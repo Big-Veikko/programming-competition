@@ -135,3 +135,11 @@ model Fundraiser {
   approval_status String
   target_status String
 }
+
+model Log {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String @db.ObjectId
+  endpoint String
+  action String
+  timestamp DateTime @default(now())
+}
