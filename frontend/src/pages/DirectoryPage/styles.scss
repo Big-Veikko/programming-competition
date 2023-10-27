@@ -1,0 +1,44 @@
+.landing{
+    height: 300px;
+    background-image: url("/src/assets/graduates.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    width: 100%; 
+    
+}
+
+.search-field{
+    display: flex;
+    gap: 0.2rem;
+    input{
+        padding: 1rem 2rem;
+    }
+
+}
+
+.content{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width: 80%;
+}
+
+table{
+    margin-top: 2rem;
+    border-collapse: collapse;
+    min-width: 400px;
+    font-size: 0.9em;
+    width: 80%;
+
+    thead{
+        background-color: var(--text);
+        color: white;
+    }
+}
+
+td, th {
+    text-align: center;
+    padding: 1rem 2rem;
+
+  }

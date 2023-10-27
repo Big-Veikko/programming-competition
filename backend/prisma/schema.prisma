@@ -108,17 +108,17 @@ model University {
 model Event {
   id     String   @id @default(auto()) @map("_id") @db.ObjectId
   subject String
-  dtstart DateTime
-  dtend DateTime
+  dtstart String
+  dtend String
   all_day_event Boolean
-  description String
-  location String
+  description String?
+  location String?
   private Boolean
   type String
   status String
   sequence Int
   priority Int
-  dtstamp DateTime
+  dtstamp String
   transp String
   organizer Json
   attendees Json[]
@@ -134,4 +134,12 @@ model Fundraiser {
   cause String
   approval_status String
   target_status String
+}
+
+model Log {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id String @db.ObjectId
+  endpoint String
+  action String
+  timestamp DateTime @default(now())
 }
