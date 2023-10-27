@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "653988137ad710603802b590"
+  },
+  "subject": "Test Event 1",
+  "dtstart": "20231111T150000",
+  "dtend": "20231111T160000",
+  "description": "Description",
+  "location": "Location",
+  "private": false,
+  "type": "event",
+  "status": "confirmed",
+  "sequence": 0,
+  "priority": 0,
+  "dtstamp": "20231025T130000Z",
+  "organizer": {
+    "name": "Name",
+    "email": "Email"
+  },
+  "attendees": [
+    {
+      "name": "Name",
+      "email": "Email"
+    }
+  ],
+  "all_day_event": false,
+  "transp": "OPAQUE"
+},
+{
+  "_id": {
+    "$oid": "653988137ad710603802b591"
+  },
+  "subject": "Test Event 2",
+  "dtstart": ";VALUE=DATE:20231120",
+  "dtend": ";VALUE=DATE:20231120",
+  "description": "Description",
+  "location": "Location",
+  "private": false,
+  "type": "event",
+  "status": "confirmed",
+  "sequence": 0,
+  "priority": 0,
+  "dtstamp": "20231025T130000Z",
+  "organizer": {
+    "name": "Name",
+    "email": "Email"
+  },
+  "all_day_event": true,
+  "transp": "TRANSPARENT"
+}]

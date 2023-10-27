@@ -1,42 +1,95 @@
 import { Express, Request, Response, NextFunction } from "express";
-import prisma from "../../database";
+import prisma from "../../database"; 
 
 
-export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const todos = await prisma.todo.findMany();
-        //console.log(todos);
-        res.json(todos);
-    } catch (error: any) {
-        res.status(500).json({message: error.message})
-    }
-}
-
-export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const {id} = req.params;
-        const todo = await prisma.todo.findUnique({
+        const user = await prisma.user.findUnique({
             where: {
-                id: String(id)
+                email: req.body.email
             }
         });
-        res.json(todo);
+
+        if (!user || user.password !== req.body.password) {
+            return res.status(400).json({message: "Invalid credentials"});
+        }
+
+        res.status(200).json({message: "Login Successful", data: {id: user.id, email: user.email, user_type: user.user_type, status: user.status}});
+
     } catch (error: any) {
-        res.status(500).json({message: "Get todo failed"})
+        res.status(500).json({message: "Login failed"})
     }
 }
 
-export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const register = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {title} = req.body;
-        const todo = await prisma.todo.create({
-            data: {
-                title: title,
-            }
+        const user = await prisma.user.create({
+            data: req.body
         });
-        res.json(todo);
+
+        res.status(200).json({message: "Registration Successfull", data: {id: user.id, email: user.email, user_type: user.user_type, status: user.status}});
     } catch (error: any) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({message: "Login failed"})
     }
 }
 
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.params.id
+            }
+        });
+
+        res.status(200).json({message: "User retrieved successfully", data: {id: user?.id, email: user?.email, user_type: user?.user_type, status: user?.status}});
+        
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}
+
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = await prisma.user.update({
+            where: {
+                id: req.params.id
+            },
+            data: req.body
+        });
+
+        res.status(200).json({message: "User updated successfully"});
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}
+
+export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        await prisma.user.delete({
+            where: {
+                id: req.params.id
+            }
+        });
+
+        res.status(200).json({message: "User deleted successfully"});
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}
+
+export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const user = await prisma.user.update({
+            where: {
+                id: req.params.id
+            },
+            data: {
+                password: req.body.password
+            }
+        });
+
+        res.status(200).json({message: "Password reset successful"});
+    } catch (error: any) {
+        res.status(500).json({message: "Login failed"})
+    }
+}

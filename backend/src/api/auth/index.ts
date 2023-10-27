@@ -1,1 +1,1 @@
-export {default as BlogRouter} from './route';
+export {default as AuthRouter} from './route';
