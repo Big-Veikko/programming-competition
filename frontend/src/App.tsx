@@ -1,28 +1,23 @@
-import React, {useEffect} from "react";
-import { Routes, Route } from "react-router-dom";
-
-// redux imports
-import { useDispatch } from "react-redux";
-
-// pages
-import TodosPage from "./pages/TodosPage";
-
-
-
-//styles
-import './default.scss';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/HomePage/Home';
+import Event from './pages/EventPage/Event';
+import ContactUs from './pages/ContactUsPage/ContactUs';
 
 const App: React.FC = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        //dispatch(expressApi.util.resetApiState());
-    }, [dispatch]);
-    return (
-        <Routes>
-            <Route path="/" element={<TodosPage/>}/>
-        </Routes>
-    )
-}
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/contactus" element={<ContactUs />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
+};
 
 export default App;
