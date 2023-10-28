@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
+import { AlumniModel } from "./alumni/alumni.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -63,6 +64,37 @@ export const expressApi = createApi({
                 body: payload
             }),
             invalidatesTags: ['Auth']
+        }),
+        getAlumni:builder.query<AlumniModel[], void>({
+            query: (id) => `/alumni/${id}`,
+            providesTags: ['Alumni']
+        }),
+        getAlumnus:builder.query<AlumniModel, string>({
+            query: (id) => `/alumni/${id}`,
+            providesTags: ['Alumni']
+        }),
+        createAlumni:builder.mutation<AlumniModel, AlumniModel>({
+            query: (body) => ({
+                url: '/alumni',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Alumni']
+        }),
+        updateAlumni:builder.mutation<AlumniModel, AlumniModel>({
+            query: (body) => ({
+                url: `/alumni/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Alumni']
+        }),
+        deleteAlumni:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/alumni/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Alumni']
         }),
       })
 });
