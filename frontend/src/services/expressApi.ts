@@ -6,6 +6,8 @@ import { FundraiserModel } from "./fundraiser/fundraiser.model";
 import { GroupModel, GroupMemberModel } from "./group/group.model";
 import { NewsModel } from "./news/news.model";
 import { OpportunityModel } from "./opportunity/opportunity.model";
+import { UniversityModel } from "./university/university.model";
+
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -308,9 +310,43 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Opportunity']
         }),
+        // router.route("/university").get(getUniversities);
+        // router.route("/university/:id").get(getUniversity);
+        // router.route("/university").post(registerUniversity);
+        // router.route("/university/:id").delete(deleteUniversity);
+        // router.route("/university/:id").put(updateUniversity);
 
-
-
+        getUniversities:builder.query<UniversityModel[], void>({
+            query: () => '/university',
+            providesTags: ['University']
+        }),
+        getUniversity:builder.query<UniversityModel, string>({
+            query: (id) => `/university/${id}`,
+            providesTags: ['University']
+        }),
+        createUniversity:builder.mutation<UniversityModel, UniversityModel>({
+            query: (body) => ({
+                url: '/university',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['University']
+        }),
+        updateUniversity:builder.mutation<UniversityModel, UniversityModel>({
+            query: (body) => ({
+                url: `/university/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['University']
+        }),
+        deleteUniversity:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/university/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['University']
+        }),
       })
 });
 
