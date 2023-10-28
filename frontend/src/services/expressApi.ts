@@ -3,6 +3,7 @@ import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
 import { AlumniModel } from "./alumni/alumni.model";
 import { EventModel } from "./event/event.model";
 import { FundraiserModel } from "./fundraiser/fundraiser.model";
+import { GroupModel, GroupMemberModel } from "./group/group.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -196,6 +197,79 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Fundraiser']
         }),
+        // router.route("/group").get(getGroups);
+        // router.route("/group/:id").get(getGroup);
+        // router.route("/group").post(createGroup);
+        // router.route("/group/:id").put(updateGroup);
+        // router.route("/group/:id").delete(deleteGroup);
+        // router.route("/group/members").get(getGroupMembers);
+        // router.route("/group/members/:id").put(addGroupMember);
+        // router.route("/group/members/:id").put(deleteGroupMember);
+        // router.route("/group/members/:id").put(updateGroupMember);
+        // router.route("/group/members/:id").get(getGroupMember);
+        getGroups:builder.query<GroupModel[], void>({
+            query: () => '/group',
+            providesTags: ['Group']
+        }),
+        getGroup:builder.query<GroupModel, string>({
+            query: (id) => `/group/${id}`,
+            providesTags: ['Group']
+        }),
+        createGroup:builder.mutation<GroupModel, GroupModel>({
+            query: (body) => ({
+                url: '/group',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Group']
+        }),
+        updateGroup:builder.mutation<GroupModel, GroupModel>({
+            query: (body) => ({
+                url: `/group/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Group']
+        }),
+        deleteGroup:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/group/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Group']
+        }),
+        getGroupMembers:builder.query<GroupMemberModel[], void>({
+            query: () => '/group/members',
+            providesTags: ['Group']
+        }),
+        getGroupMember:builder.query<GroupMemberModel, string>({
+            query: (id) => `/group/members/${id}`,
+            providesTags: ['Group']
+        }),
+        addGroupMember:builder.mutation<GroupMemberModel, GroupMemberModel>({
+            query: (body) => ({
+                url: `/group/members/${body.id}`,
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Group']
+        }),
+        updateGroupMember:builder.mutation<GroupMemberModel, GroupMemberModel>({
+            query: (body) => ({
+                url: `/group/members/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Group']
+        }),
+        deleteGroupMember:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/group/members/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Group']
+        }),
+
 
       })
 });
