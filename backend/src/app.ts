@@ -7,6 +7,7 @@ import { LogRouter } from './api/log';
 import { UniversityRouter } from "./api/university";
 import { GroupRouter } from "./api/group";
 import { FundrasierRouter } from "./api/fundraiser";
+import { NewsRouter } from './api/news';
 import cors from 'cors';
 
 
@@ -33,6 +34,7 @@ app.use('/api', LogRouter);
 app.use("/api", UniversityRouter);
 app.use("/api", GroupRouter);
 app.use("/api", FundrasierRouter);
+app.use('/api', NewsRouter);
 
 
 export default app;
