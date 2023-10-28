@@ -1,0 +1,31 @@
+
+
+  {
+    "name": "Victor Paredes",
+    "university": "Universidad de Chile",
+    "degree": "Bachelor",
+    "major": "Computer Science",
+    "graduation": 2018,
+    "employment_status": "Employed",
+    "employment_history": [
+        {
+            "company": "Google",
+            "position": "Software Engineer",
+            "start_date": "2018-01-01",
+            "end_date": "2018-12-31"
+        },
+        {
+            "company": "Facebook",
+            "position": "Software Engineer",
+            "start_date": "2017-01-01",
+            "end_date": "2017-12-31"
+        },
+        {
+            "company": "Amazon",
+            "position": "Software Engineer",
+            "start_date": "2016-01-01",
+            "end_date": "2016-12-31"
+        }
+    ]
+
+  }

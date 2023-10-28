@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
+import { AuthModel, AuthenticatedUserModel, AuthenticationResponseModel } from "./auth/auth.model";
 import { AlumniModel } from "./alumni/alumni.model";
 import { EventModel } from "./event/event.model";
 import { FundraiserModel } from "./fundraiser/fundraiser.model";
@@ -14,22 +14,11 @@ export const expressApi = createApi({
     baseQuery: fetchBaseQuery({
       baseUrl: 'http://localhost:7000/api',
     }),
+    keepUnusedDataFor: 5,
     tagTypes: ['Auth', 'Alumni', 'Blog', 'Event', 'Fundraiser', 'Group', 'Log', 'Mail', 'News', 'Opportunity', 'University', 'User'],
 
     endpoints: (builder) => ({
-        // getTodos:builder.query<TodoModel[], void>({
-        //     query: () => '/todos',
-        //     providesTags: (result) => providesList(result, 'Auth')
-        // }),
-        // addTodo:builder.mutation<TodoModel, {title: string}>({
-        //     query: (body) => ({
-        //         url: '/todos',
-        //         method: 'POST',
-        //         body
-        //     }),
-        //     invalidatesTags: ['Auth']
-        // }),
-        login:builder.mutation<AuthenticatedUserModel, AuthModel>({
+        login:builder.mutation<AuthenticationResponseModel, AuthModel>({
             query: (body) => ({
                 url: 'auth/login',
                 method: 'POST',
@@ -73,7 +62,7 @@ export const expressApi = createApi({
             invalidatesTags: ['Auth']
         }),
         getAlumni:builder.query<AlumniModel[], void>({
-            query: (id) => `/alumni/${id}`,
+            query: (id) => `/alumni`,
             providesTags: ['Alumni']
         }),
         getAlumnus:builder.query<AlumniModel, string>({
@@ -119,7 +108,7 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Event']
         }),
-        updateEvent:builder.mutation<EventModel, EventModel>({
+        updateEvent:builder.mutation<any, any>({
             query: (body) => ({
                 url: `/event/${body.id}`,
                 method: 'PUT',
@@ -310,12 +299,6 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Opportunity']
         }),
-        // router.route("/university").get(getUniversities);
-        // router.route("/university/:id").get(getUniversity);
-        // router.route("/university").post(registerUniversity);
-        // router.route("/university/:id").delete(deleteUniversity);
-        // router.route("/university/:id").put(updateUniversity);
-
         getUniversities:builder.query<UniversityModel[], void>({
             query: () => '/university',
             providesTags: ['University']
@@ -351,11 +334,54 @@ export const expressApi = createApi({
 });
 
 export const {
-  useLoginMutation,
-  useRegisterMutation,
-  useGetUserQuery,
-  useUpdateUserMutation,
-  useDeleteUserMutation,
-  useResetPasswordMutation
+    useLoginMutation,
+    useRegisterMutation,
+    useGetUserQuery,
+    useUpdateUserMutation,
+    useDeleteUserMutation,
+     useResetPasswordMutation,
+    useGetEventsQuery,
+    useGetEventQuery,
+    useCreateEventMutation,
+    useUpdateEventMutation,
+    useDeleteEventMutation,
+    useGetFundraisersQuery,
+    useGetFundraiserQuery,
+    useCreateFundraiserMutation,
+    useUpdateFundraiserMutation,
+    useGetOngoingFundraisersQuery,
+    useDeleteFundraiserMutation,
+    useApproveFundraiserMutation,
+    useGetGroupsQuery,
+    useGetGroupQuery,
+    useCreateGroupMutation,
+    useUpdateGroupMutation,
+    useDeleteGroupMutation,
+    useGetGroupMembersQuery,
+    useGetGroupMemberQuery,
+    useAddGroupMemberMutation,
+    useUpdateGroupMemberMutation,
+    useDeleteGroupMemberMutation,
+    useGetNewsQuery,
+    useGetNewsAQuery,
+    useCreateNewsAMutation,
+    useGetOppsQuery,
+    useGetOppQuery,
+    useCreateOppMutation,
+    useUpdateOppMutation,
+    useDeleteOppMutation,
+    useGetUniversitiesQuery,
+    useGetUniversityQuery,
+    useCreateUniversityMutation,
+    useUpdateUniversityMutation,
+    useDeleteUniversityMutation,
+    useGetAlumnusQuery,
+    useGetAlumniQuery,
+    useCreateAlumniMutation,
+    useUpdateAlumniMutation,
+    useDeleteAlumniMutation
+
+
+
   
 } = expressApi;

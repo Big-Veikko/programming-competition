@@ -1,7 +1,9 @@
 import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
-import { IEvent, IEventRequest } from "./model";
+import { IEvent, IEventRequest, IEventResponse } from "./model";
 import { createCalendarEvent } from "./utils";
+import moment from 'moment';
+
 
 
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +21,9 @@ export const getEvents = async (req: Request, res: Response, next: NextFunction)
                 dtend: true,
                 organizer: true,
                 description: true,
-                all_day_event: true
+                all_day_event: true,
+                location: true,
+                type: true,
             }
         });
 
@@ -31,8 +35,23 @@ export const getEvents = async (req: Request, res: Response, next: NextFunction)
             }
         });
 
+        let eventsResponse: IEventResponse[] = [];
+        events.forEach(event => {
+            const eventResponse: IEventResponse = {
+                id: event.id,
+                day: new Date(moment(event.dtstart.split(":")[1]).format('YYYY-MM-DD')).getUTCDate().toString(),
+                month: new Date(moment(event.dtstart.split(":")[1]).format('YYYY-MM-DD')).getUTCMonth().toString(),
+                location: event.location? event.location: "No Location",
+                type: event.type,
+                subject: event.subject,
+                date: new Date(moment(event.dtstart.split(":")[1]).format('YYYY-MM-DD')).toString()
+                
+            }
+            eventsResponse.push(eventResponse);
+        });    
+
         
-        res.status(200).json(events)
+        res.status(200).json(eventsResponse)
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
@@ -112,6 +131,8 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
         }
 
     } catch (error: any) {
+        console.error(error);
+        
         res.status(500).json({message: error.message})
     }
 }

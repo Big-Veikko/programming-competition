@@ -5,11 +5,11 @@ import storage from 'redux-persist/lib/storage';
 
 // apis and slices
 import { expressApi } from '../services/expressApi';
-import todoSlice from '../services/todo/todo.slice';
+import authSlice from '../services/auth/auth.slice';
 
 const reducers = combineReducers({
     [expressApi.reducerPath]: expressApi.reducer,
-    todo: todoSlice.reducer
+    auth: authSlice.reducer
 });
 
 const persistConfig = {

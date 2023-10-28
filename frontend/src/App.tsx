@@ -7,6 +7,7 @@ import Event from "./pages/EventPage/Event";
 import ContactUs from "./pages/ContactUsPage/ContactUs";
 import { DirectoryPage } from "./pages/DirectoryPage";
 import GivingPage from "./pages/GivingPage/Giving";
+import EventCreation from "./pages/EventCreation";
 
 import './default.scss'
 import { LoginPage } from "./pages/LoginPage";
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/giving" element={<GivingPage />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/directory" element={<DirectoryPage />} />
+        <Route path="/event-creation" element={<EventCreation />} />
       </Routes>
   );
 };

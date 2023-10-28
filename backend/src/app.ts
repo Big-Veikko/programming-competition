@@ -14,7 +14,7 @@ import cors from 'cors';
 
 const app = express();
 const corsConfig = {
-	origin: "https://programming-competition.vercel.app",
+	origin: "*",
 	optionsSuccessStatus: 200,
 };
 

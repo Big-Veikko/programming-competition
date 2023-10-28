@@ -1,0 +1,35 @@
+.event-page {
+    text-align: center;
+    background-color: white;
+    color: #000;
+    padding: 20px;
+    .formRow {
+  
+      input, textarea,
+      &.checkoutInput select {
+        display: block;
+        width: 100%;
+        font-size: 1.5rem;
+        line-height: 1;
+        font-weight: 400;
+        text-align: left;
+        padding:10px 20px;
+        margin: 10px auto;
+        outline: none;
+        border-radius: 0.25rem;
+        border: 1px solid #E1D8C7;
+        background: #F7F7F7;
+      }
+  
+      textarea{
+        resize: none;
+      }
+    }
+  }
+  
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  
