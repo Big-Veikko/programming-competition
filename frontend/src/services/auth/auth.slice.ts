@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./auth.actions";
 
 const userToken = localStorage.getItem("userToken")
   ? localStorage.getItem("userToken")
@@ -27,25 +26,6 @@ const authSlice = createSlice({
       state.user = payload;
     }
   },
-  extraReducers: (builder) => {
-    builder.addCase(login.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-      state.success = false;
-    });
-    builder.addCase(login.fulfilled, (state, { payload }) => {
-      state.loading = false;
-      state.error = null;
-      state.user = payload?.userDetails;
-      state.userToken = payload?.userDetails.token;
-      state.success = true;
-    });
-    builder.addCase(login.rejected, (state, { payload }) => {
-      state.loading = false;
-      state.error = { message: payload };
-      state.success = false;
-    });
-  }
 });
 
 export const { setCredentials, logout } = authSlice.actions;

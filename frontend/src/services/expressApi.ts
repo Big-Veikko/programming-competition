@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
+import { AuthModel, AuthenticatedUserModel, AuthenticationResponseModel } from "./auth/auth.model";
 import { AlumniModel } from "./alumni/alumni.model";
 import { EventModel } from "./event/event.model";
 import { FundraiserModel } from "./fundraiser/fundraiser.model";
@@ -17,19 +17,7 @@ export const expressApi = createApi({
     tagTypes: ['Auth', 'Alumni', 'Blog', 'Event', 'Fundraiser', 'Group', 'Log', 'Mail', 'News', 'Opportunity', 'University', 'User'],
 
     endpoints: (builder) => ({
-        // getTodos:builder.query<TodoModel[], void>({
-        //     query: () => '/todos',
-        //     providesTags: (result) => providesList(result, 'Auth')
-        // }),
-        // addTodo:builder.mutation<TodoModel, {title: string}>({
-        //     query: (body) => ({
-        //         url: '/todos',
-        //         method: 'POST',
-        //         body
-        //     }),
-        //     invalidatesTags: ['Auth']
-        // }),
-        login:builder.mutation<AuthenticatedUserModel, AuthModel>({
+        login:builder.mutation<AuthenticationResponseModel, AuthModel>({
             query: (body) => ({
                 url: 'auth/login',
                 method: 'POST',
