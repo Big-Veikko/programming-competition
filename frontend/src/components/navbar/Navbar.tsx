@@ -1,7 +1,6 @@
 // import React from "react";
 import "./styles.scss";
 import logoImage from "/src/assets/XA.png";
-import { PrimaryBtn } from "../button/Buttons";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
