@@ -30,7 +30,6 @@ app.use('/api', AuthRouter);
 app.use('/api', EventRouter);
 app.use('/api', MailRouter);
 app.use('/api', LogRouter);
-app.use("/api", TodoRouter);
 app.use("/api", UniversityRouter);
 app.use("/api", GroupRouter);
 app.use("/api", FundrasierRouter);

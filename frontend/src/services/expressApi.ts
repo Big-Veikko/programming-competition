@@ -5,14 +5,14 @@ import { providesList } from "../utils";
 export const expressApi = createApi({
     reducerPath: 'expressApi',
     baseQuery: fetchBaseQuery({
-      baseUrl: import.meta.env.VITE_EXPRESS_API_URL as string,
+      baseUrl: 'http://localhost:7000/api',
     }),
-    tagTypes: ['Todos'],
+    tagTypes: ['Auth', 'Alumni', 'Blog', 'Event', 'Fundraiser', 'Group', 'Log', 'Mail', 'News', 'Opportunity', 'University', 'User'],
 
     endpoints: (builder) => ({
         getTodos:builder.query<TodoModel[], void>({
             query: () => '/todos',
-            providesTags: (result) => providesList(result, 'Todos')
+            providesTags: (result) => providesList(result, 'Auth')
         }),
         addTodo:builder.mutation<TodoModel, {title: string}>({
             query: (body) => ({
@@ -20,7 +20,7 @@ export const expressApi = createApi({
                 method: 'POST',
                 body
             }),
-            invalidatesTags: ['Todos']
+            invalidatesTags: ['Auth']
         }),
       })
 });
