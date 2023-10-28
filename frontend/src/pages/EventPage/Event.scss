@@ -1,58 +1,12 @@
 .event-page {
-    text-align: center;
-    background-color: white;
-    color: #000;
-    padding: 20px;
-  }
-  
-  .header {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .line {
-    height: 2px;
-    background-color: #000;
-    margin: 10px 0;
-  }
-  
-  .event-box {
-    background-color: white;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    border: 1px solid #000;
-  
-    .event-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      text-align: left;
-  
-      .date {
-        font-weight: bold;
-      }
-  
-      .location-type {
-        color: #777;
-      }
-  
-      .title {
-        font-weight: 600;
-      }
-  
-      .date-time {
-        color: #777;
-      }
-  
-      .add-to-calendar {
-        color: #003459;
-        text-decoration: none;
-        font-weight: 600;
-        display: block;
-      }
-    }
-  }
-  
+  text-align: center;
+  background-color: white;
+  color: #000;
+  padding: 20px;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+}
+
