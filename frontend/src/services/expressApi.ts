@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { TodoModel } from "./todo/todo.model";
-import { providesList } from "../utils";
+import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -10,15 +9,58 @@ export const expressApi = createApi({
     tagTypes: ['Auth', 'Alumni', 'Blog', 'Event', 'Fundraiser', 'Group', 'Log', 'Mail', 'News', 'Opportunity', 'University', 'User'],
 
     endpoints: (builder) => ({
-        getTodos:builder.query<TodoModel[], void>({
-            query: () => '/todos',
-            providesTags: (result) => providesList(result, 'Auth')
-        }),
-        addTodo:builder.mutation<TodoModel, {title: string}>({
+        // getTodos:builder.query<TodoModel[], void>({
+        //     query: () => '/todos',
+        //     providesTags: (result) => providesList(result, 'Auth')
+        // }),
+        // addTodo:builder.mutation<TodoModel, {title: string}>({
+        //     query: (body) => ({
+        //         url: '/todos',
+        //         method: 'POST',
+        //         body
+        //     }),
+        //     invalidatesTags: ['Auth']
+        // }),
+        login:builder.mutation<AuthenticatedUserModel, AuthModel>({
             query: (body) => ({
-                url: '/todos',
+                url: 'auth/login',
                 method: 'POST',
                 body
+            }),
+            invalidatesTags: ['Auth']
+        }),
+        register:builder.mutation<AuthenticatedUserModel, AuthenticatedUserModel>({
+            query: (body) => ({
+                url: 'auth/register',
+                method: 'POST',
+                body
+            }),
+        }),
+        getUser:builder.query<AuthenticatedUserModel, string>({
+            query: (id) => `/auth/user/${id}`,
+            providesTags: ['Auth']
+
+        }),
+        updateUser:builder.mutation<AuthenticatedUserModel, AuthenticatedUserModel>({
+            query: (payload) => ({
+                url: `/auth/user/${payload.id}`,
+                method: 'PUT',
+                body: payload
+            }),
+            invalidatesTags: ['Auth']
+        }),
+        deleteUser:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/auth/user/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Auth']
+        }),
+        resetPassword:builder.mutation<{message: string}, AuthenticatedUserModel>({
+            query: (payload) => ({
+                url: `/auth/user/reset-password/${payload.id}`,
+                method: 'POST',
+                body: payload
             }),
             invalidatesTags: ['Auth']
         }),
@@ -26,6 +68,11 @@ export const expressApi = createApi({
 });
 
 export const {
-  useGetTodosQuery, 
-  useAddTodoMutation
+  useLoginMutation,
+  useRegisterMutation,
+  useGetUserQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+  useResetPasswordMutation
+  
 } = expressApi;
