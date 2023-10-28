@@ -1,5 +1,5 @@
 export interface EventModel {
-    id: number;
+    id: string;
     subject: string;
     dtstart: string;
     dtend: string;
