@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
 import { AlumniModel } from "./alumni/alumni.model";
 import { EventModel } from "./event/event.model";
+import { FundraiserModel } from "./fundraiser/fundraiser.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -152,6 +153,50 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Event']
         }),
+        getFundraisers:builder.query<FundraiserModel[], void>({
+            query: () => '/fundraiser',
+            providesTags: ['Fundraiser']
+        }),
+        getFundraiser:builder.query<FundraiserModel, string>({
+            query: (id) => `/fundraiser/${id}`,
+            providesTags: ['Fundraiser']
+        }),
+        createFundraiser:builder.mutation<FundraiserModel, FundraiserModel>({
+            query: (body) => ({
+                url: '/fundraiser',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Fundraiser']
+        }),
+        updateFundraiser:builder.mutation<FundraiserModel, FundraiserModel>({
+            query: (body) => ({
+                url: `/fundraiser/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Fundraiser']
+        }),
+        getOngoingFundraisers:builder.query<FundraiserModel[], void>({
+            query: () => '/fundraiser/ongoing',
+            providesTags: ['Fundraiser']
+        }),
+        deleteFundraiser:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/fundraiser/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Fundraiser']
+        }),
+        approveFundraiser:builder.mutation<FundraiserModel, FundraiserModel>({
+            query: (body) => ({
+                url: `/fundraiser/approve/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Fundraiser']
+        }),
+
       })
 });
 
