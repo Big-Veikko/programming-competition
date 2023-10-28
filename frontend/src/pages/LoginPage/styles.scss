@@ -1,0 +1,22 @@
+.loginPage{
+    background-image: url("/src/assets/loginBgImg.jpg");
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--secondary);
+    padding: 3rem;
+
+    input{
+        padding: 1rem 2rem;
+
+    }
+}
