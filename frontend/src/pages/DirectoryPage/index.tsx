@@ -4,7 +4,14 @@ import { SubmitBtn } from "../../components/button/Buttons";
 
 import "./styles.scss";
 
+import { useGetAlumniQuery } from "../../services/expressApi";
+
 export const DirectoryPage = () => {
+  const { data: alumni = [], error, isLoading } = useGetAlumniQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error occured contact the administrator</div>;
+  
   return (
     <>
       <Navbar />
@@ -26,30 +33,15 @@ export const DirectoryPage = () => {
             <th>Graduaton Year</th>
           </thead>
           <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>Master's</td>
-                <td>Biomed</td>
-                <td>2021</td>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>Master's</td>
-                <td>Biomed</td>
-                <td>2021</td>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>Master's</td>
-                <td>Biomed</td>
-                <td>2021</td>
-            </tr>
-            <tr>
-                <td>John Doe</td>
-                <td>Master's</td>
-                <td>Biomed</td>
-                <td>2021</td>
-            </tr>
+            {alumni.map((alumnus) => (
+              <tr key={alumnus.id}>
+                  <td>{alumnus.name}</td>
+                  <td>{alumnus.degree}</td>
+                  <td>{alumnus.major}</td>
+                  <td>{alumnus.graduation}</td>
+              </tr>
+            ))}
+
           </tbody>
         </table>
       </div>

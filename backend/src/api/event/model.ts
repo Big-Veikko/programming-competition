@@ -20,6 +20,17 @@ export interface IEventRequest {
     attendees: IAttendee[];
 };
 
+export interface IEventResponse {
+    id: string;
+    day: string;
+    month: string;
+    location: string;
+    type: string;
+    subject: string;
+    date: string;
+  
+  }
+
 export interface IEvent {
     id:string,
     subject: string,

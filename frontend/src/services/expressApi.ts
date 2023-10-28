@@ -14,6 +14,7 @@ export const expressApi = createApi({
     baseQuery: fetchBaseQuery({
       baseUrl: 'http://localhost:7000/api',
     }),
+    keepUnusedDataFor: 5,
     tagTypes: ['Auth', 'Alumni', 'Blog', 'Event', 'Fundraiser', 'Group', 'Log', 'Mail', 'News', 'Opportunity', 'University', 'User'],
 
     endpoints: (builder) => ({
@@ -61,7 +62,7 @@ export const expressApi = createApi({
             invalidatesTags: ['Auth']
         }),
         getAlumni:builder.query<AlumniModel[], void>({
-            query: (id) => `/alumni/${id}`,
+            query: (id) => `/alumni`,
             providesTags: ['Alumni']
         }),
         getAlumnus:builder.query<AlumniModel, string>({
@@ -298,12 +299,6 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Opportunity']
         }),
-        // router.route("/university").get(getUniversities);
-        // router.route("/university/:id").get(getUniversity);
-        // router.route("/university").post(registerUniversity);
-        // router.route("/university/:id").delete(deleteUniversity);
-        // router.route("/university/:id").put(updateUniversity);
-
         getUniversities:builder.query<UniversityModel[], void>({
             query: () => '/university',
             providesTags: ['University']
@@ -339,11 +334,54 @@ export const expressApi = createApi({
 });
 
 export const {
-  useLoginMutation,
-  useRegisterMutation,
-  useGetUserQuery,
-  useUpdateUserMutation,
-  useDeleteUserMutation,
-  useResetPasswordMutation
+    useLoginMutation,
+    useRegisterMutation,
+    useGetUserQuery,
+    useUpdateUserMutation,
+    useDeleteUserMutation,
+     useResetPasswordMutation,
+    useGetEventsQuery,
+    useGetEventQuery,
+    useCreateEventMutation,
+    useUpdateEventMutation,
+    useDeleteEventMutation,
+    useGetFundraisersQuery,
+    useGetFundraiserQuery,
+    useCreateFundraiserMutation,
+    useUpdateFundraiserMutation,
+    useGetOngoingFundraisersQuery,
+    useDeleteFundraiserMutation,
+    useApproveFundraiserMutation,
+    useGetGroupsQuery,
+    useGetGroupQuery,
+    useCreateGroupMutation,
+    useUpdateGroupMutation,
+    useDeleteGroupMutation,
+    useGetGroupMembersQuery,
+    useGetGroupMemberQuery,
+    useAddGroupMemberMutation,
+    useUpdateGroupMemberMutation,
+    useDeleteGroupMemberMutation,
+    useGetNewsQuery,
+    useGetNewsAQuery,
+    useCreateNewsAMutation,
+    useGetOppsQuery,
+    useGetOppQuery,
+    useCreateOppMutation,
+    useUpdateOppMutation,
+    useDeleteOppMutation,
+    useGetUniversitiesQuery,
+    useGetUniversityQuery,
+    useCreateUniversityMutation,
+    useUpdateUniversityMutation,
+    useDeleteUniversityMutation,
+    useGetAlumnusQuery,
+    useGetAlumniQuery,
+    useCreateAlumniMutation,
+    useUpdateAlumniMutation,
+    useDeleteAlumniMutation
+
+
+
   
 } = expressApi;
