@@ -6,6 +6,9 @@ import Home from "./pages/HomePage/Home";
 import Event from "./pages/EventPage/Event";
 import ContactUs from "./pages/ContactUsPage/ContactUs";
 import { DirectoryPage } from "./pages/DirectoryPage";
+import GivingPage from "./pages/GivingPage/Giving";
+
+import './default.scss'
 
 const App: React.FC = () => {
     
@@ -14,6 +17,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Event />} />
+        <Route path="/giving" element={<GivingPage />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/directory" element={<DirectoryPage />} />
       </Routes>

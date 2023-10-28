@@ -1,0 +1,78 @@
+.hero {
+  background-image: url("/src/assets/rena-m-agst-A7nX28geWRw-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10em;
+  height: 250px;
+
+  h3 {
+    color: white;
+    font-size: x-large;
+  }
+
+  p {
+    color: white;
+    width: 60%;
+  }
+}
+
+.content{
+}
+
+.cards {
+  display: flex;
+    width: 80%;
+    justify-content: center;
+  gap: 2rem;
+}
+
+table {
+  //   border: 1px #000 dotted;
+  width: 100%;
+}
+
+.info-card {
+  padding: 3rem;
+  border-radius: 4px;
+  background-color: var(--accent);
+  color: var(--text);
+  flex-grow: 2;
+
+  h2{
+    color: var(--text);
+  }
+}
+
+.nb-card {
+  padding: 3rem;
+  border-radius: 4px;
+  flex-grow: 1;
+  flex-shrink: 2;
+  background-color: var(--text);
+
+  h2,
+  p,
+  li {
+    color: white;
+  }
+
+  ul{
+    li {
+        font-size: 0.9em;
+    }
+  }
+
+
+}
+
+tr {
+  padding: 1rem;
+}
+
+td, th{
+  text-align: left;
+
+}

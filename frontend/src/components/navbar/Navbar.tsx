@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div className="navbar">
-      <a href="">
+      <Link to={"/"}>
         <img src={logoImage} alt="" />
-      </a>
+      </Link>
       <div className="nav-items">
         <div className="nav-links">
           <Link to={"/"}>Home</Link>
-          <a href="">Giving</a>
+          <Link to={"/giving"}>Giving</Link>
           <Link to={"/events"}>Events</Link>
           <a href="">Opportunity</a>
           <a href="">Blog</a>
