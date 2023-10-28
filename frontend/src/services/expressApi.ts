@@ -5,6 +5,7 @@ import { EventModel } from "./event/event.model";
 import { FundraiserModel } from "./fundraiser/fundraiser.model";
 import { GroupModel, GroupMemberModel } from "./group/group.model";
 import { NewsModel } from "./news/news.model";
+import { OpportunityModel } from "./opportunity/opportunity.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -275,6 +276,37 @@ export const expressApi = createApi({
                 body
             }),
             invalidatesTags: ['News']
+        }),
+        getOpps:builder.query<OpportunityModel[], void>({
+            query: () => '/opp',
+            providesTags: ['Opportunity']
+        }),
+        getOpp:builder.query<OpportunityModel, string>({
+            query: (id) => `/opp/${id}`,
+            providesTags: ['Opportunity']
+        }),
+        createOpp:builder.mutation<OpportunityModel, OpportunityModel>({
+            query: (body) => ({
+                url: '/opp',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Opportunity']
+        }),
+        updateOpp:builder.mutation<OpportunityModel, OpportunityModel>({
+            query: (body) => ({
+                url: `/opp/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Opportunity']
+        }),
+        deleteOpp:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/opp/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Opportunity']
         }),
 
 
