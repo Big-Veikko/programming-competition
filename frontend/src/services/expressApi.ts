@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { AuthModel, AuthenticatedUserModel } from "./auth/auth.model";
 import { AlumniModel } from "./alumni/alumni.model";
+import { EventModel } from "./event/event.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -95,6 +96,61 @@ export const expressApi = createApi({
                 method: 'DELETE'
             }),
             invalidatesTags: ['Alumni']
+        }),
+        getEvents:builder.query<EventModel[], void>({
+            query: () => '/event',
+            providesTags: ['Event']
+        }),
+        getEvent:builder.query<EventModel, string>({
+            query: (id) => `/event/${id}`,
+            providesTags: ['Event']
+        }),
+        createEvent:builder.mutation<EventModel, EventModel>({
+            query: (body) => ({
+                url: '/event',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Event']
+        }),
+        updateEvent:builder.mutation<EventModel, EventModel>({
+            query: (body) => ({
+                url: `/event/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Event']
+        }),
+        deleteEvent:builder.mutation<{message: string}, string>({
+            query: (id) => ({
+                url: `/event/${id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Event']
+        }),
+        attendEvent:builder.mutation<EventModel, EventModel>({
+            query: (body) => ({
+                url: `/event/attend/${body.id}`,
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Event']
+        }),
+        unattendEvent:builder.mutation<EventModel, EventModel>({
+            query: (body) => ({
+                url: `/event/attend/${body.id}`,
+                method: 'DELETE',
+                body
+            }),
+            invalidatesTags: ['Event']
+        }),
+        approveEvent:builder.mutation<EventModel, EventModel>({
+            query: (body) => ({
+                url: `/event/approve/${body.id}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Event']
         }),
       })
 });
