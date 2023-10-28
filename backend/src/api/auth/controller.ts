@@ -41,7 +41,7 @@ export const getUser = async (req: Request, res: Response, next: NextFunction) =
             }
         });
 
-        res.status(200).json({message: "User retrieved successfully", data: {id: user?.id, email: user?.email, user_type: user?.user_type, status: user?.status}});
+        res.status(200).json({ data: {id: user?.id, email: user?.email, user_type: user?.user_type, status: user?.status}});
         
     } catch (error: any) {
         res.status(500).json({message: "Login failed"})
@@ -57,7 +57,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
             data: req.body
         });
 
-        res.status(200).json({message: "User updated successfully"});
+        res.status(200).json(user);
     } catch (error: any) {
         res.status(500).json({message: "Login failed"})
     }
