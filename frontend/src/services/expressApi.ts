@@ -108,7 +108,7 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Event']
         }),
-        updateEvent:builder.mutation<EventModel, EventModel>({
+        updateEvent:builder.mutation<any, any>({
             query: (body) => ({
                 url: `/event/${body.id}`,
                 method: 'PUT',

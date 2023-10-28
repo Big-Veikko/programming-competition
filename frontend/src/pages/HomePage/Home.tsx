@@ -2,6 +2,8 @@ import React from "react";
 import "./Home.scss";
 import Navbar from "../../components/navbar/Navbar";
 
+import { useGetNewsQuery } from "../../services/expressApi";
+
 const Home: React.FC = () => {
   return (
     <div>

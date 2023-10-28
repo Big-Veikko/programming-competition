@@ -5,6 +5,7 @@ import { createCalendarEvent } from "./utils";
 import moment from 'moment';
 
 
+
 export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
     try {
         
@@ -130,6 +131,8 @@ export const createEvent = async (req: Request<IEventRequest>, res: Response, ne
         }
 
     } catch (error: any) {
+        console.error(error);
+        
         res.status(500).json({message: error.message})
     }
 }
