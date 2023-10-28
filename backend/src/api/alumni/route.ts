@@ -1,12 +1,14 @@
 import { Router, Response, Request } from "express";
-import { getTodos, getTodo, createTodo } from "./controller";
+import { getAlumni, getAlumnus, createAlumni, updateAlumni, deleteAlumni } from "./controller";
 
 
 const router: Router = Router();
 
 
-router.route('/todos').get(getTodos);
-router.route('/todos/:id').get(getTodo);
-router.route('/todos').post(createTodo);
+router.route('/alumni').get(getAlumni);
+router.route('/alumni').post(createAlumni);
+router.route('/alumni/:id').get(getAlumnus);
+router.route('/alumni/:id').put(updateAlumni);
+router.route('/alumni/:id').delete(deleteAlumni);
 
 export default router;

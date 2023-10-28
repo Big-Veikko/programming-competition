@@ -2,41 +2,67 @@ import { Express, Request, Response, NextFunction } from "express";
 import prisma from "../../database";
 
 
-export const getTodos = async (req: Request, res: Response, next: NextFunction) => {
+export const getAlumni = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const todos = await prisma.todo.findMany();
-        //console.log(todos);
-        res.json(todos);
+        const alumni = await prisma.alumni.findMany();
+        res.json(alumni);
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
 }
 
-export const getTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const getAlumnus = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const {id} = req.params;
-        const todo = await prisma.todo.findUnique({
+        const alumni = await prisma.alumni.findUnique({
             where: {
                 id: String(id)
             }
         });
-        res.json(todo);
+        res.json(alumni);
     } catch (error: any) {
-        res.status(500).json({message: "Get todo failed"})
+        res.status(500).json({message: "Get alumni failed"})
     }
 }
 
-export const createTodo = async (req: Request, res: Response, next: NextFunction) => {
+export const createAlumni = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {title} = req.body;
-        const todo = await prisma.todo.create({
-            data: {
-                title: title,
-            }
+        const alumni = await prisma.alumni.create({
+            data: req.body
         });
-        res.json(todo);
+        res.json(alumni);
     } catch (error: any) {
         res.status(500).json({message: error.message})
     }
 }
+
+export const updateAlumni = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const {id} = req.params;
+        const alumni = await prisma.alumni.update({
+            where: {
+                id: String(id)
+            },
+            data: req.body
+        });
+        res.json(alumni);
+    } catch (error: any) {
+        res.status(500).json({message: "Update alumni failed"})
+    }
+}
+
+export const deleteAlumni = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const {id} = req.params;
+        const alumni = await prisma.alumni.delete({
+            where: {
+                id: String(id)
+            }
+        });
+        res.json(alumni);
+    } catch (error: any) {
+        res.status(500).json({message: "Delete alumni failed"})
+    }
+}
+
 

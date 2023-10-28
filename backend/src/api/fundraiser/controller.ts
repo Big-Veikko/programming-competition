@@ -76,7 +76,6 @@ export const createFundraiser = async (
 ) => {
 	try {
 		const {
-			id,
 			event_id,
 			target,
 			raised,
@@ -86,8 +85,7 @@ export const createFundraiser = async (
 		} = req.body;
 		const fundraiser = await prisma.fundraiser.create({
 			data: {
-				id: id,
-				event_id: event_id,
+				event_details: {connect: {id: event_id}},
 				target: target,
 				raised: raised,
 				cause: cause,
@@ -95,8 +93,10 @@ export const createFundraiser = async (
 				target_status: target_status,
 			},
 		});
-		res.status(200).json({ message: "Fundraiser successfully created" });
+		res.status(200).json({ message: "Fundraiser successfully created", data: fundraiser });
 	} catch (error: any) {
+		console.error(error);
+		
 		res.status(500).json({ message: error.message });
 	}
 };
