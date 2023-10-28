@@ -9,12 +9,14 @@ import { DirectoryPage } from "./pages/DirectoryPage";
 import GivingPage from "./pages/GivingPage/Giving";
 
 import './default.scss'
+import { LoginPage } from "./pages/LoginPage";
 
 const App: React.FC = () => {
     
   return (
 
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Event />} />
         <Route path="/giving" element={<GivingPage />} />
