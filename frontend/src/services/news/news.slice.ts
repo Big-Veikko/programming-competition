@@ -12,7 +12,7 @@ const initialState: NewsState = {
 };
 
 const newsSlice = createSlice({
-    name: 'group',
+    name: 'news',
     initialState,
     reducers: {
         
