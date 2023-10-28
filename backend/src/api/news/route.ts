@@ -5,8 +5,8 @@ import { getNews, getNewsA, createNewsA } from "./controller";
 const router: Router = Router();
 
 
-router.route('/todos').get(getNews);
-router.route('/todos/:id').get(getNewsA);
-router.route('/todos').post(createNewsA);
+router.route('/news').get(getNews);
+router.route('/news/:id').get(getNewsA);
+router.route('/news').post(createNewsA);
 
 export default router;
