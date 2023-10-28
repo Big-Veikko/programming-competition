@@ -4,6 +4,7 @@ import { AlumniModel } from "./alumni/alumni.model";
 import { EventModel } from "./event/event.model";
 import { FundraiserModel } from "./fundraiser/fundraiser.model";
 import { GroupModel, GroupMemberModel } from "./group/group.model";
+import { NewsModel } from "./news/news.model";
 
 export const expressApi = createApi({
     reducerPath: 'expressApi',
@@ -197,16 +198,6 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Fundraiser']
         }),
-        // router.route("/group").get(getGroups);
-        // router.route("/group/:id").get(getGroup);
-        // router.route("/group").post(createGroup);
-        // router.route("/group/:id").put(updateGroup);
-        // router.route("/group/:id").delete(deleteGroup);
-        // router.route("/group/members").get(getGroupMembers);
-        // router.route("/group/members/:id").put(addGroupMember);
-        // router.route("/group/members/:id").put(deleteGroupMember);
-        // router.route("/group/members/:id").put(updateGroupMember);
-        // router.route("/group/members/:id").get(getGroupMember);
         getGroups:builder.query<GroupModel[], void>({
             query: () => '/group',
             providesTags: ['Group']
@@ -269,6 +260,23 @@ export const expressApi = createApi({
             }),
             invalidatesTags: ['Group']
         }),
+        getNews:builder.query<NewsModel[], void>({
+            query: () => '/news',
+            providesTags: ['News']
+        }),
+        getNewsA:builder.query<NewsModel, string>({
+            query: (id) => `/news/${id}`,
+            providesTags: ['News']
+        }),
+        createNewsA:builder.mutation<NewsModel, NewsModel>({
+            query: (body) => ({
+                url: '/news',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['News']
+        }),
+
 
 
       })
