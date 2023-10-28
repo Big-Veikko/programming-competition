@@ -1,5 +1,6 @@
 
 import express from 'express';
+import {AlumniRouter} from './api/alumni';
 import { AuthRouter } from './api/auth';
 import { EventRouter } from './api/event';
 import { MailRouter } from './api/mail';
@@ -27,6 +28,7 @@ app.use(cors(
 app.disable('x-powered-by');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use('/api', AlumniRouter)
 app.use('/api', AuthRouter);
 app.use('/api', EventRouter);
 app.use('/api', MailRouter);
